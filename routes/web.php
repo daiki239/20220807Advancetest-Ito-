@@ -16,13 +16,8 @@ use App\Http\Controllers\ContactsController;
 // お問い合わせ入力ページ
 Route::get('/', [ContactsController::class, 'index']);
 
-
-
 // 確認ページ
-Route::post('/confirm', 'ContactsController@confirm')->name('confirm');
-
-// DB挿入、メール送信
-Route::post('/process', 'ContactsController@process')->name('process');
+Route::post('/confirm', 'App\Http\Controllers\ContactsController@confirm')->name('confirm');
 
 // 完了ページ
-Route::get('/complete', 'ContactsController@complete')->name('complete');
+Route::post('/complete', 'App\Http\Controllers\ContactsController@complete')->name('complete');

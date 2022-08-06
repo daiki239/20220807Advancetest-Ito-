@@ -21,38 +21,16 @@ $title = 'お問い合わせ';
         {!! Form::open(['route' => 'confirm', 'method' => 'POST']) !!}
             {{ csrf_field() }}
             <div class="form-group row">
-                <p class="col-sm-4 col-form-label">お名前（10文字以内）<span class="badge badge-danger ml-1">※</span></p>
-                <div class="col-sm-8">
-                    {{ Form::text('name', null, ['class' => 'form-control']) }}
-                      {{ Form::text('name', null, ['class' => 'form-control']) }}
-                </div>
+                <p class="col-sm-4 col-form-label">お名前（10文字以内）<span class="badge badge-danger ml-1">※  {{ Form::text('name', null, ['class' => 'form-control']) }}
+                      {{ Form::text('name', null, ['class' => 'form-control']) }}</span></p>
+               
             </div>
             @if ($errors->has('name'))
                 <p class="alert alert-danger">{{ $errors->first('name') }}</p>
             @endif
-
+　　　　　　　
             <div class="form-group row">
-                <p class="col-sm-4 col-form-label">メールアドレス<span class="badge badge-danger ml-1">必須</span></p>
-                <div class="col-sm-8">
-                    {{ Form::text('email', null, ['class' => 'form-control']) }}
-                </div>
-            </div>
-            @if ($errors->has('email'))
-                <p class="alert alert-danger">{{ $errors->first('email') }}</p>
-            @endif
-
-            <div class="form-group row">
-                <p class="col-sm-4 col-form-label">電話番号</p>
-                <div class="col-sm-8">
-                    {{ Form::text('tel', null, ['class' => 'form-control']) }}
-                </div>
-            </div>
-            @if ($errors->has('tel'))
-                <p class="alert alert-danger">{{ $errors->first('tel') }}</p>
-            @endif
-
-            <div class="form-group row">
-                <p class="col-sm-4 col-form-label">性別<span class="badge badge-danger ml-1">必須</span></p>
+                <p class="col-sm-4 col-form-label">性別<span class="badge badge-danger ml-1">※</span></p>
                 <div class="col-sm-8">
                     <label>{{ Form::radio('gender', "男性") }}男性</label>
                     <label>{{ Form::radio('gender', "女性") }}女性</label>
@@ -62,18 +40,59 @@ $title = 'お問い合わせ';
                 <p class="alert alert-danger">{{ $errors->first('gender') }}</p>
             @endif
 
+
             <div class="form-group row">
-                <p class="col-sm-4 col-form-label">お問い合わせ内容<span class="badge badge-danger ml-1">必須</span></p>
+                <p class="col-sm-4 col-form-label">メールアドレス<span class="badge badge-danger ml-1">※</span></p>
+                <div class="col-sm-8">
+                    {{ Form::text('email', null, ['class' => 'form-control']) }}
+                </div>
+            </div>
+            @if ($errors->has('email'))
+                <p class="alert alert-danger">{{ $errors->first('email') }}</p>
+            @endif
+
+            <div class="form-group row">
+                <p class="col-sm-4 col-form-label">郵便番号<span class="badge badge-danger ml-1">※</span></p>
+                <div class="col-sm-8">
+                    {{ Form::text('postcode', null, ['class' => 'form-control']) }}
+                </div>
+            </div>
+            @if ($errors->has('poctcode'))
+                <p class="alert alert-danger">{{ $errors->first('postcode') }}</p>
+            @endif
+
+               <div class="form-group row">
+                <p class="col-sm-4 col-form-label">住所<span class="badge badge-danger ml-1">※</span></p>
+                <div class="col-sm-8">
+                    {{ Form::text('address', null, ['class' => 'form-control']) }}
+                </div>
+            </div>
+            @if ($errors->has('address'))
+                <p class="alert alert-danger">{{ $errors->first('address') }}</p>
+            @endif
+
+               <div class="form-group row">
+                <p class="col-sm-4 col-form-label">建物名<span class="badge badge-danger ml-1">※</span></p>
+                <div class="col-sm-8">
+                    {{ Form::text('building_game', null, ['class' => 'form-control']) }}
+                </div>
+            </div>
+            @if ($errors->has('building_game'))
+                <p class="alert alert-danger">{{ $errors->first('building_game') }}</p>
+            @endif
+　　　　　　
+            <div class="form-group row">
+                <p class="col-sm-4 col-form-label">ご意見<span class="badge badge-danger ml-1">※</span></p>
                 <div class="col-sm-8">
                     {{ Form::textarea('contents', null, ['class' => 'form-control']) }}
                 </div>
             </div>
-            @if ($errors->has('contents'))
+            @if ($errors->has('text'))
                 <p class="alert alert-danger">{{ $errors->first('contents') }}</p>
             @endif
             
             <div class="text-center">
-                {{ Form::submit('確認画面へ', ['class' => 'btn btn-primary']) }}
+                {{ Form::submit('確認', ['class' => 'btn btn-primary']) }}
             </div>
         {!! Form::close() !!}
     </div>

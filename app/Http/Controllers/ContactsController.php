@@ -23,37 +23,34 @@ class ContactsController extends Controller
             'tel'      => 'nullable|numeric',
             'gender'   => 'required',
             'contents' => 'required',
+             'postcode' => 'required',
         ]);
 
         // フォームから受け取ったすべてのinputの値を取得
         $inputs = $request->all();
-
-        return view('contacts.confirm', ['inputs' => $inputs]);
+        
+        
+        return view('confirm', ['inputs' => $inputs]);
+       
+       
+        
     }
 
-    public function process(Request $request)
-    {
-        $action = $request->get('action', 'return');
-        $input  = $request->except('action');
-
-        if($action === 'submit') {
-
-            // DBにデータを保存
-            $contact = new Contact();
-            $contact->fill($input);
-            $contact->save();
-
-            // メール送信
-            Mail::to($input['email'])->send(new ContactMail('mails.contact', 'お問い合わせありがとうございます', $input));
-
-            return redirect()->route('complete');
-        } else {
-            return redirect()->route('contact')->withInput($input);
+    public function complete(Request $request)
+    { // 確認画面で戻るボタンが押された場合
+        if ($request->get('action') === 'return') {
+            // 入力画面へ戻る
+            return redirect('/')
+                ;
         }
-    }
+                
+        
+       
 
-    public function complete()
-    {
-        return view('contacts.complete');
+        // フォームから受け取ったすべてのinputの値を取得
+        $inputs = $request->all();
+
+        return view('complete', ['inputs' => $inputs]);
     }
+    
 }

@@ -13,9 +13,11 @@ class Contact extends Model
 
     protected $fillable = [
         'name',
-        'email',
-        'tel',
         'gender',
+        'email',
+        'postcode',
+        'address',
+        'building_game',
         'contents',
     ];
 }
