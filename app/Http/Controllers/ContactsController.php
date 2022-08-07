@@ -15,6 +15,9 @@ class ContactsController extends Controller
         return view('index');
     }
 
+    
+     
+
     public function confirm(Request $request)
     {
         $request->validate([
@@ -28,29 +31,25 @@ class ContactsController extends Controller
 
         // フォームから受け取ったすべてのinputの値を取得
         $inputs = $request->all();
-        
-        
         return view('confirm', ['inputs' => $inputs]);
        
-       
-        
     }
 
     public function complete(Request $request)
     { // 確認画面で戻るボタンが押された場合
+        
         if ($request->get('action') === 'return') {
             // 入力画面へ戻る
-            return redirect('/')
-                ;
+            return redirect('/')->withInput();
+            
         }
-                
-        
-       
-
+               
         // フォームから受け取ったすべてのinputの値を取得
         $inputs = $request->all();
-
+        
         return view('complete', ['inputs' => $inputs]);
     }
-    
+
+
+ 
 }

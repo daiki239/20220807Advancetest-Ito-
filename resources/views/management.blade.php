@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/css/style.css">
-    <title>お問い合わせ - 確認</title>
+ <meta charset="utf-8">
+ <title>Todo List</title>
+
 </head>
 <body>
-    @php
+  @php
 $title = 'お問い合わせ - 確認';
 @endphp
 
@@ -35,7 +33,10 @@ $title = 'お問い合わせ - 確認';
 
 
             <div class="form-group row">
-                <p class="col-sm-4 col-form-label">メールアドレス<span class="badge badge-danger ml-1"></span>{{ $inputs['email'] }}</p>
+                <p class="col-sm-4 col-form-label">メールアドレス<span class="badge badge-danger ml-1">必須</span></p>
+                <div class="col-sm-8">
+                    {{ $inputs['email'] }}
+                </div>
             </div>
             <input type="hidden" name="email" value="{{ $inputs['email'] }}">
 
